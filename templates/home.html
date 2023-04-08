@@ -4,14 +4,54 @@
   <title>
     Gratia shopping 
   </title> 
+  <style>
+    h1{
+      font: size: 40px;
+      font-family: Roboto;
+      font-weight: normal;
+      color: rgb(150,150,0)
+      text-align: center;
+      object-fit: cover;
+    }
+    #banner{
+      width: 100%;
+      height: 360px
+    }
+    h2{
+      font: size: 40px;
+      font-family: Roboto;
+      font-weight: normal;
+      color: rgb(100,100,100)
+      text-align: center;
+    }
+    p{
+      font-family: Roboto;
+      color: rgb(80,80,80);
+    }
+    #container{
+      max-width: 720px;
+      margin: 0 auto;
+    }
+  </style>
   <link rel="shortcut icon" href="{{url_for('static',filename='fav_icon.ICO')}}">
   </head>
   <body>
+    <div id="container">
+    <div style="text-align:center;">
     <h1>Gratia Online shopping </h1>
-    <img src="https://gratia-shopping.westillest.repl.co/static/banner.jpeg" heigt="220" >
+    </div>
+    <img id="banner" src="https://gratia-shopping.westillest.repl.co/static/banner.jpeg"  >
+    <div style="text-align:center;">
     <h2> About Gratia </h2>
+    </div>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Gratia is an online shop that sells many products. Here you can purchase Beauty products, Electronics, clothing for men and women and even beddings. You can look at the product and if you are interested in purchasing it you just add it to the cart and choose either to pay online or pay on delivery.  
     </p>
+    <p>Todo - show the product</p>
+    <div style="text-align:center;">
+    <button>Contact Us </button>
+      <p> Copyright 2023, Gratia </p>
+    </div
+    </div>
   </body>
 </html>
