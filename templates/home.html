@@ -13,17 +13,25 @@
       height: 360px;
       width: 100%;
       object-fit: cover;
+      margin-bottom: 16px;
     }
   </style>
   </head>
   <body>
+    {% include 'nav.html' %}
+    <img id="banner"class="img-fluid"src="https://gratia-shopping.westillest.repl.co/static/banner.jpeg"  >
     <div class="container">
     <h1 class="text-center mt-2 mb-4">Gratia Online shopping </h1>
-    <img id="banner"class="img-fluid"src="https://gratia-shopping.westillest.repl.co/static/banner.jpeg"  >
-    <h2 class="text-center mt-4 mb2"> About Gratia </h2>
-    <p class="lead">
+      <div class="row" style="margin-bottom:16px">
+        <div class="col-md-6">
+    <p class="lead ">
       Gratia is an online shop that sells many products. Here you can purchase Beauty products, Electronics, clothing for men and women and even beddings. You can look at the product and if you are interested in purchasing it you just add it to the cart and choose either to pay online or pay on delivery.  
     </p>
+        </div>
+        <div class="d-none d-md-block col-md-6">
+        <img src="/static/gratia.jpeg" style="height:220px;border-radius:16px;">
+        </div>
+        </div>
     <h2 class="text-center mt-4 mb-4"> Products</h2>
     <div>
       {% for product in products %}    
@@ -31,8 +39,8 @@
       {% endfor %}
     </div>
     <div class="text-center">
-    <button class="btn btn-primary btn-lg">Contact Us </button>
-      <p class="text-center mt-2 mb-4"> Copyright 2023, Gratia </p>
+    <a href="mailto:calebmtuweta@gmail.com?subject=Questions%20or%20querries%20about%20Gratia%20online%20shop%20&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0AMy%20query%20or%20question%3A%20%3Cyour%20question%20or%20query%3E"class="btn btn-primary btn-lg">Contact Us </a>
     </div>
+    {% include 'footer.html' %}
   </body>
 </html>
