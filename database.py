@@ -19,11 +19,9 @@ def load_products_from_db():
     with engine.connect() as conn:
       
       result = conn.execute(text("SELECT * FROM products"))
-        
-
-      products = []
-      for row in result.all():
-        products.append(list(row))
+      rows = result.fetchall()
+      column_names = result.keys()
+      products = [dict(zip(column_names, row)) for row in rows]
       return products
 
 
