@@ -36,6 +36,22 @@ async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
 
 [[package]]
+name = "flask-wtf"
+version = "1.1.1"
+description = "Form rendering, validation, and CSRF protection for Flask with WTForms."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Flask = "*"
+itsdangerous = "*"
+WTForms = "*"
+
+[package.extras]
+email = ["email-validator"]
+
+[[package]]
 name = "greenlet"
 version = "2.0.2"
 description = "Lightweight in-process concurrent programming"
@@ -134,15 +150,30 @@ MarkupSafe = ">=2.1.1"
 [package.extras]
 watchdog = ["watchdog"]
 
+[[package]]
+name = "wtforms"
+version = "3.0.1"
+description = "Form validation and rendering for Python web development."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+MarkupSafe = "*"
+
+[package.extras]
+email = ["email-validator"]
+
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "b1b8a15ce7d7de72e0ce854a6e9fe0ede29e27e0668c548e2a8fdf419b0ac3d5"
+content-hash = "5fa9da6ecdc67fbd995eb883d4fa3b9ed9b572b9178a756a11f76d5022a6a36d"
 
 [metadata.files]
 click = []
 colorama = []
 flask = []
+flask-wtf = []
 greenlet = []
 itsdangerous = []
 jinja2 = []
@@ -150,3 +181,4 @@ markupsafe = []
 sqlalchemy = []
 typing-extensions = []
 werkzeug = []
+wtforms = []

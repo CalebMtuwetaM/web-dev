@@ -1,0 +1,71 @@
+<DOCTYPE! html>
+  <html>
+    <head>
+      <title>Gratia Shopping</title>
+      {% include'bootstrap.html' %}
+    </head>
+    <body>
+      <h3>Name</h3>
+      {% include 'nav.html' %}
+      {% include 'banner.html' %}
+      <div class="container">
+      <h1 class="text-center mt-2 mb-4">Gratia Online shopping </h1>
+
+
+
+    <div class="content-section">
+        <form method="POST" ACTION="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
+                        {{ form.email(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
+                        {{ form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.password(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input")}}
+                    {{ form.remember.label(class="form-check-label")}}
+                </div>
+
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class = "btn btn-outline-info") }}
+            </div>
+            <small class="text-muted ml-2">
+                <a href="#">Forgot password?</a>
+            </small>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need an account? <a class="ml-2" href="{{ url_for('register') }}">Sign Up Now</a>
+        </small>
+    </div>
+
+
+              {% include 'footer.html' %}
+    </body>
+  </html>
