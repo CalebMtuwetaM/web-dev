@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify,url_for,flash,redirect
-from database import load_products_from_db,load_product_from_db
+from database import load_products_from_db,load_product_from_db,adding_users_to_the_db
 from forms import RegistrationForm,LoginForm
 
 app = Flask(__name__)
@@ -31,8 +31,9 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         flash(f"Account created for {form.username.data}!","success")
-        return redirect(url_for("home"))
+        return redirect(url_for("hello_world"))
     return render_template('register.html', title='Register', form=form)
+    adding_users_to_the_db(form)
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -40,7 +41,7 @@ def login():
     if form.validate_on_submit():
         if form.email.data == 'admin@blog.com' and form.password.data == 'password':
             flash('You have been logged in!', 'success')
-            return redirect(url_for('home'))
+            return redirect(url_for('hello_world'))
         else:
             flash('Login unsuccessful. Please check username and password','danger')
     return render_template("login.html",title="Login",form=form)

@@ -5,7 +5,7 @@
       {% include'bootstrap.html' %}
     </head>
     <body>
-      <h3>Name</h3>
+      
       {% include 'nav.html' %}
       {% include 'banner.html' %}
       <div class="container">
@@ -63,16 +63,16 @@
 
                 </div>
                 <div class="form-group">
-                    {{ form.confirm_password.label(class="form-control-label") }}
-                    {% if form.confirm_password.errors %}
-                        {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                    {{ form.password_confirmation.label(class="form-control-label") }}
+                    {% if form.password_confirmation.errors %}
+                        {{ form.password_confirmation(class="form-control form-control-lg is-invalid") }}
                         <div class="invalid-feedback">
-                            {% for error in form.confirm_password.errors %}
+                            {% for error in form.password_confirmation.errors %}
                                 <span>{{ error }}</span>
                             {% endfor %}
                         </div>
                     {% else %}
-                        {{ form.confirm_password(class="form-control form-control-lg") }}
+                        {{ form.password_confirmation(class="form-control form-control-lg") }}
                     {% endif %}
 
                 </div>

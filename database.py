@@ -35,3 +35,12 @@ def load_product_from_db(id):
     else:
       return products[0]
     
+def adding_users_to_the_db(form):
+  with engine.connect() as conn:
+    query = text("INSERT INTO users (username,email,password,password_confirmation)VALUES( :username, :email, :password, :password_confirmation)")
+
+  conn.execute(query,
+              username=form['username'],
+              email=form['email'],
+              password=form['password'],
+              confirmation_password=form['confirmation_password'],)
