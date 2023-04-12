@@ -3,3 +3,4 @@ gunicorn
 sqlalchemy
 pymysql
 flask_wtf
+email_validator
