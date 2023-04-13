@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify,url_for,flash,redirect
 from database import load_products_from_db,load_product_from_db,adding_users_to_the_db
 from forms import RegistrationForm,LoginForm
+from flask_wtf.csrf import CSRFProtect
 
 app = Flask(__name__)
 
@@ -20,10 +21,10 @@ def show_product(id):
   if not product:
     return "Not Found",404
   return render_template('productpage.html',product=product)
-from flask_wtf.csrf import CSRFProtect
 
 
-app.config['SECRET_KEY'] = 'your_secret_key_here' # Set your secret key here
+
+app.config['SECRET_KEY'] = 'Gratia_Premium' # Set your secret key here
 csrf = CSRFProtect(app)
 
 @app.route("/register", methods=['GET','POST'])
@@ -41,12 +42,15 @@ def login():
     if form.validate_on_submit():
         if form.email.data == 'admin@blog.com' and form.password.data == 'password':
             flash('You have been logged in!', 'success')
-            return redirect(url_for('hello_world'))
+            return redirect(url_for('products'))
         else:
             flash('Login unsuccessful. Please check username and password','danger')
     return render_template("login.html",title="Login",form=form)
 
-
+@app.route("/products")
+def products():
+  products = load_products_from_db()
+  return render_template("products.html",products=products)
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0',debug=True)

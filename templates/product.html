@@ -1,5 +1,17 @@
-<div class="border-bottom row" style="margin-bottom:16px;padding-bottom:8px;">
-  <div class="col-10">
+<style>
+    #banner{
+      height: 360px;
+      width: 100%;
+      object-fit: cover;
+      margin-bottom: 16px;
+    }
+  </style>
+
+<div class="border-bottom row" style="margin-bottom:16px;padding-bottom:8px;margin-top:16px;">
+  <div class="col-2">
+    <img src="{{ url_for('static', filename='banner.jpeg') }}" alt="{{product['name']}}" class="img-fluid" style="max-height: 100px;">
+  </div>
+  <div class="col-8">
     <h4 style="color:rgb(120,120,120); margin-bottom:4px;">
       <b>Name:</b>{{product['name']}}
     </h4>
@@ -9,8 +21,9 @@
     <div>
       <p><b>Price:</b>{{product['price']}} Ksh</p>
     </div>
-    </div>
-    <div class="col-2 padding-right:16px;">
-      <a href="/product/{{product['id']}}" type="button" class="btn btn-outline-primary float-right align-middle">Request for item </a>
-    </div>
+  </div>
+  <div class="col-2" style="padding-right:16px;">
+    <a href="/product/{{product['id']}}" type="button" class="btn btn-outline-primary float-right align-middle">Request for item </a>
+  </div>
 </div>
+

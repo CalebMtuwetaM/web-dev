@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+    Gratia shopping 
+  </title> 
+  {% include 'bootstrap.html' %}
+  
+  </head>
+  <body>
+    {% include 'nav.html' %}
+    {% include 'banner.html' %}
+    <div class="container">
+    <h1 class="text-center mt-2 mb-4">Gratia Online shopping </h1>
+    <h2 class="text-center mt-4 mb-4"> Products</h2>
+    <div>
+      {% for product in products %}    
+        {% include 'product.html' %}
+      {% endfor %}
+    </div>
+     <div class="text-center">
+    <a href="mailto:calebmtuweta@gmail.com?subject=Questions%20or%20querries%20about%20Gratia%20online%20shop%20&body=My%20name%3A%20%3Cyour%20name%20here%3E%0D%0AMy%20query%20or%20question%3A%20%3Cyour%20question%20or%20query%3E"class="btn btn-primary btn-lg">Contact Us </a>
+    </div>
+    {% include 'footer.html' %}
+  </body>
+</html>
