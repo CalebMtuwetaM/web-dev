@@ -52,5 +52,9 @@ def products():
   products = load_products_from_db()
   return render_template("products.html",products=products)
 
+@app.route("/admin")
+def admin():
+  return render_template("admin.html")
+
 if __name__ == '__main__':
   app.run(host='0.0.0.0',debug=True)
