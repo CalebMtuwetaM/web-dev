@@ -1,7 +1,9 @@
-from flask import Flask, render_template, jsonify,url_for,flash,redirect
-from database import load_products_from_db,load_product_from_db,adding_users_to_the_db
+from flask import Flask, render_template, jsonify,url_for,flash,redirect,session
+from database import load_products_from_db,load_product_from_db,adding_users_to_the_db,get_user_by_email
 from forms import RegistrationForm,LoginForm
 from flask_wtf.csrf import CSRFProtect
+from werkzeug.security import check_password_hash
+
 
 app = Flask(__name__)
 
@@ -30,22 +32,37 @@ csrf = CSRFProtect(app)
 @app.route("/register", methods=['GET','POST'])
 def register():
     form = RegistrationForm()
+    Form = form
+    adding_users_to_the_db(Form)
     if form.validate_on_submit():
         flash(f"Account created for {form.username.data}!","success")
         return redirect(url_for("hello_world"))
+      
     return render_template('register.html', title='Register', form=form)
-    adding_users_to_the_db(form)
+    
 
 @app.route("/login", methods=['GET','POST'])
+
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+        email = form.email.data
+        entered_password = form.password.data
+
+        # Retrieve the stored password from the database
+        stored_password = get_user_by_email(email)
+
+        if stored_password == entered_password:
+            # Passwords match
+            #session['user_id'] = user.id
             flash('You have been logged in!', 'success')
             return redirect(url_for('products'))
         else:
-            flash('Login unsuccessful. Please check username and password','danger')
-    return render_template("login.html",title="Login",form=form)
+            # Passwords don't match
+            flash('Login unsuccessful. Please check email and password', 'danger')
+    return render_template("login.html", title="Login", form=form)
+
+
 
 @app.route("/products")
 def products():
@@ -58,3 +75,4 @@ def admin():
 
 if __name__ == '__main__':
   app.run(host='0.0.0.0',debug=True)
+  
